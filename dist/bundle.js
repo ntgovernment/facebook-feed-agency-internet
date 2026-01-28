@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("Facebook Feed Agency Internet - Loaded!"),document.addEventListener("DOMContentLoaded",()=>{const e=document.getElementById("app");e&&(e.innerHTML="<h1>Welcome to Facebook Feed Agency Internet</h1><p>The application is running successfully!</p>")})})();
