@@ -28,6 +28,7 @@
   display: grid;
   gap: 24px;
   margin-bottom: 24px;
+  align-items: start;
 }
 
 /* Compact card size - responsive grid */
@@ -53,9 +54,9 @@
   height: 100%;
   background: var(--clr-bg-default);
   outline: 1px var(--clr-border-subtle) solid;
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -71,24 +72,44 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  display: inline-flex;
+  display: flex;
   width: 100%;
 }
 
 /* Image Section */
 .fb-card__image {
   align-self: stretch;
-  height: 198.56px;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
   position: relative;
   overflow: hidden;
   background: #f0f0f0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.fb-card__image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.1);
+  z-index: 0;
 }
 
 .fb-card__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  z-index: 1;
   left: 0;
   top: 0;
   transition: opacity 0.3s ease;

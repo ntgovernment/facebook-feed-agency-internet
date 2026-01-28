@@ -127,7 +127,7 @@ function createPhotoCard(post) {
   card.className = "fb-card";
   card.innerHTML = `
     <div class="fb-card__inner" data-footer="true" data-header="true" data-rich-media="true">
-      <div class="fb-card__image" data-ratio="16:9">
+      <div class="fb-card__image" data-ratio="16:9" style="background-image: url('${imageUrl}')">
         <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/353x199?text=Image+Not+Available'">
       </div>
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
