@@ -92,7 +92,7 @@
 }
 
 .fb-card__image::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image: inherit;
@@ -412,6 +412,22 @@
 }
 
 .fb-modal__link svg {
+  color: var(--clr-link-default);
+}
+
+/* Text Links */
+.fb-text-link {
+  color: var(--clr-link-default);
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.fb-text-link:hover {
+  color: #141447;
+}
+
+.fb-card__description .fb-text-link,
+.fb-modal__body .fb-text-link {
   color: var(--clr-link-default);
 }
 

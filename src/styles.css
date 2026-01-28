@@ -8,6 +8,9 @@
   --clr-status-info: #107cc0;
   --clr-text-default: #1f1e27;
   --clr-link-default: #1f1f5f;
+  --clr-link-hover: #c33826;
+  --clr-focus-focus: #ec8c58;
+  --clr-border-strong-01: #1f1f5f;
 }
 
 /* Facebook Feed Container */
@@ -92,7 +95,7 @@
 }
 
 .fb-card__image::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image: inherit;
@@ -413,6 +416,45 @@
 
 .fb-modal__link svg {
   color: var(--clr-link-default);
+}
+
+/* Text Links */
+.fb-text-link {
+  color: var(--clr-link-default);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-text-link:focus,
+.fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
+}
+
+.fb-card__description .fb-text-link,
+.fb-modal__body .fb-text-link {
+  color: var(--clr-link-default);
+}
+
+.fb-card__description .fb-text-link:hover,
+.fb-modal__body .fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-card__description .fb-text-link:focus,
+.fb-card__description .fb-text-link:focus-visible,
+.fb-modal__body .fb-text-link:focus,
+.fb-modal__body .fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
 }
 
 /* Responsive Modal */
