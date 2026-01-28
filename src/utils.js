@@ -75,15 +75,17 @@ export function processText(text) {
 
 // Helper: Determine if post has photo/album attachment
 export function hasPhotoAttachment(post) {
-  if (
-    !post.attachments ||
-    !post.attachments.data ||
-    !post.attachments.data[0]
-  ) {
-    return false;
+  // Check for full_picture field (includes shared posts)
+  if (post.full_picture) {
+    return true;
   }
-  // Check if post has an image in media field
-  return !!post.attachments.data[0].media?.image?.src;
+
+  // Check for image in attachments
+  if (post.attachments?.data?.[0]?.media?.image?.src) {
+    return true;
+  }
+
+  return false;
 }
 
 // Helper: Get image URL from post

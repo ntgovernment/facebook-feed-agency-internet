@@ -12,6 +12,9 @@ export function createPhotoCard(post) {
   const { title, description } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
   const imageUrl = getImageUrl(post);
+  const tagLabel = post.full_picture
+    ? (post.attachments?.data?.[0]?.type || "Post").replace(/_/g, " ")
+    : "Shared post";
 
   // Process description to include links
   const processedDescription = processText(description);
@@ -26,7 +29,7 @@ export function createPhotoCard(post) {
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
         <div class="fb-card__tag-wrapper">
           <div class="fb-card__tag" data-variant="Blue">
-            <div>News</div>
+            <div>${tagLabel}</div>
           </div>
         </div>
         <div class="fb-card__date">${formattedDate}</div>
@@ -69,6 +72,9 @@ export function createPhotoCard(post) {
 export function createTextCard(post) {
   const { title, description } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
+  const tagLabel = post.full_picture
+    ? (post.attachments?.data?.[0]?.type || "Post").replace(/_/g, " ")
+    : "Shared post";
 
   // Process description to include links
   const processedDescription = processText(description);
@@ -80,7 +86,7 @@ export function createTextCard(post) {
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
         <div class="fb-card__tag-wrapper">
           <div class="fb-card__tag" data-variant="Blue">
-            <div>News</div>
+            <div>${tagLabel}</div>
           </div>
         </div>
         <div class="fb-card__date">${formattedDate}</div>
