@@ -144,8 +144,10 @@
 
 .fb-card__tag {
   padding: 4px 8px;
-  background: var(--clr-status-info-bg);
+  background: var(--clr-bg-default);
   overflow: hidden;
+  outline: 1px var(--clr-border-subtle) solid;
+  outline-offset: -1px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -153,7 +155,7 @@
 }
 
 .fb-card__tag div {
-  color: var(--clr-status-info);
+  color: var(--clr-text-default);
   font-size: 12px;
   font-family: Lato, sans-serif;
   font-weight: 700;
@@ -252,6 +254,11 @@
   transform: translateX(4px);
 }
 
+.fb-card__button:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
+}
+
 .fb-card__button span {
   color: var(--clr-link-default);
 }
@@ -299,6 +306,11 @@
 
 .fb-feed__load-more:active {
   transform: translateY(0);
+}
+
+.fb-feed__load-more:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
 }
 
 /* Tag Label Styles */
@@ -429,6 +441,11 @@
 
 .fb-modal__link:hover {
   gap: 12px;
+}
+
+.fb-modal__link:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
 }
 
 .fb-modal__link svg {
