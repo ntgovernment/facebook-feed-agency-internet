@@ -116,6 +116,11 @@
   gap: 12px;
 }
 
+.fb-modal__link:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
+}
+
 .fb-modal__link svg {
   color: var(--clr-link-default);
 }

@@ -29,6 +29,11 @@
   transform: translateY(0);
 }
 
+.fb-feed__load-more:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
+}
+
 /* Tag Label Styles */
 .fb-tag-label {
   color: var(--clr-text-default);
