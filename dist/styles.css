@@ -11,6 +11,9 @@
   --clr-link-hover: #c33826;
   --clr-focus-focus: #ec8c58;
   --clr-border-strong-01: #1f1f5f;
+  --clr-action-primary: #1f1f5f;
+  --clr-link-inverse: white;
+  --clr-action-hover: #c33826;
 }
 
 /* Facebook Feed Container */
@@ -252,6 +255,16 @@
   transform: translateX(4px);
 }
 
+.fb-card__button:hover span,
+.fb-card__button:hover .fb-card__arrow svg {
+  color: #c33826;
+}
+
+.fb-card__button:focus,
+.fb-card__button:focus-visible {
+  outline: 4px solid #ec8c58 !important;
+}
+
 .fb-card__button span {
   color: var(--clr-link-default);
 }
@@ -272,15 +285,20 @@
 
 /* Load More Button */
 .fb-feed__load-more {
-  display: block;
+  display: inline-flex;
   margin: 0 auto;
-  padding: 12px 32px;
-  background: var(--clr-link-default);
-  color: white;
+  padding: 16px 24px;
+  background: var(--clr-action-primary);
+  color: var(--clr-link-inverse);
   border: none;
   font-family: Lato, sans-serif;
   font-size: 16px;
   font-weight: 700;
+  line-height: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
   cursor: pointer;
   transition:
     background 0.2s ease,
@@ -288,12 +306,17 @@
 }
 
 .fb-feed__load-more:hover {
-  background: #141447;
+  background: #c33826 !important;
   transform: translateY(-2px);
 }
 
 .fb-feed__load-more:active {
   transform: translateY(0);
+}
+
+.fb-feed__load-more:focus,
+.fb-feed__load-more:focus-visible {
+  outline: 4px solid #ec8c58 !important;
 }
 
 /* Modal Styles */
@@ -412,6 +435,16 @@
 
 .fb-modal__link:hover {
   gap: 12px;
+  color: #c33826;
+}
+
+.fb-modal__link:hover svg {
+  color: #c33826;
+}
+
+.fb-modal__link:focus,
+.fb-modal__link:focus-visible {
+  outline: 4px solid #ec8c58 !important;
 }
 
 .fb-modal__link svg {
