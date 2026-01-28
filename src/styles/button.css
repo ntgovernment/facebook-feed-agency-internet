@@ -1,0 +1,42 @@
+/* Load More Button */
+.fb-feed__load-more {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  background: var(--clr-action-pirmary);
+  color: var(--clr-link-inverse);
+  border: none;
+  font-family: Lato, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+  overflow: hidden;
+}
+
+.fb-feed__load-more:hover {
+  background: #141447;
+  transform: translateY(-2px);
+}
+
+.fb-feed__load-more:active {
+  transform: translateY(0);
+}
+
+/* Tag Label Styles */
+.fb-tag-label {
+  color: var(--clr-text-default);
+  font-size: 12px;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}

@@ -1,0 +1,14 @@
+/* CSS Custom Properties */
+:root {
+  --clr-bg-default: white;
+  --clr-border-subtle: #d3d3d7;
+  --clr-status-info-bg: #e4f0f8;
+  --clr-status-info: #107cc0;
+  --clr-text-default: #1f1e27;
+  --clr-link-default: #1f1f5f;
+  --clr-link-hover: #c33826;
+  --clr-focus-focus: #ec8c58;
+  --clr-border-strong-01: #1f1f5f;
+  --clr-action-pirmary: #1f1f5f;
+  --clr-link-inverse: white;
+}
