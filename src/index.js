@@ -60,7 +60,7 @@ function setupFeed(widget, posts, cardSize) {
   // Add load more button if needed
   if (posts.length > itemsPerPage) {
     const loadMoreBtn = document.createElement("button");
-    loadMoreBtn.className = "fb-feed__load-more";
+    loadMoreBtn.className = "btn btn-primary";
     loadMoreBtn.textContent = "Load more";
     loadMoreBtn.addEventListener("click", () => {
       const start = currentPage * itemsPerPage;
