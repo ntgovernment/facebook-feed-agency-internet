@@ -1,3 +1,42 @@
+/* Base Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+.btn:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
+}
+
+/* Tertiary Button Variant */
+.btn-tertiary {
+  padding: 8px 0;
+  justify-content: flex-start;
+  color: var(--clr-link-default);
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.btn-tertiary:hover {
+  color: var(--clr-link-hover);
+}
+
+.btn-tertiary svg {
+  color: var(--clr-link-default);
+}
+
+.btn-tertiary:hover svg {
+  color: var(--clr-link-hover);
+}
+
 /* Load More Button */
 .fb-feed__load-more {
   display: inline-flex;

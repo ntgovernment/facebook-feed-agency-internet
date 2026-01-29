@@ -28,7 +28,7 @@ export function showPostModal(post) {
         postUrl !== "#"
           ? `
         <div class="fb-modal__footer">
-          <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="fb-modal__link">
+          <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
             View original post on Facebook
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M12 8.67v4.66a.67.67 0 01-.67.67H2.67A.67.67 0 012 13.33V4.67c0-.37.3-.67.67-.67h4.66M10 2h4v4M6.67 9.33L14 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

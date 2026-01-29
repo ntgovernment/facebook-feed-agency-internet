@@ -230,36 +230,6 @@
   display: flex;
 }
 
-.fb-card__button {
-  padding: 8px 0;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 8px;
-  display: inline-flex;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--clr-link-default);
-  font-size: 14px;
-  font-family: Lato, sans-serif;
-  font-weight: 700;
-  line-height: 16px;
-  transition: transform 0.2s ease;
-}
-
-.fb-card__button:hover {
-  transform: translateX(4px);
-}
-
-.fb-card__button:focus {
-  outline: 4px solid var(--clr-focus-focus);
-  outline-offset: 2px;
-}
-
-.fb-card__button span {
-  color: var(--clr-link-default);
-}
-
 .fb-card__arrow {
   width: 16px;
   height: 16px;
@@ -272,6 +242,45 @@
 
 .fb-card__arrow svg {
   color: var(--clr-link-default);
+}
+
+/* Base Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+.btn:focus {
+  outline: 4px solid var(--clr-focus-focus);
+  outline-offset: 2px;
+}
+
+/* Tertiary Button Variant */
+.btn-tertiary {
+  padding: 8px 0;
+  justify-content: flex-start;
+  color: var(--clr-link-default);
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.btn-tertiary:hover {
+  color: var(--clr-link-hover);
+}
+
+.btn-tertiary svg {
+  color: var(--clr-link-default);
+}
+
+.btn-tertiary:hover svg {
+  color: var(--clr-link-hover);
 }
 
 /* Load More Button */
@@ -424,29 +433,8 @@
   border-top: 1px solid var(--clr-border-subtle);
 }
 
-.fb-modal__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--clr-link-default);
-  text-decoration: none;
-  font-family: Lato, sans-serif;
+.fb-modal__footer .btn-tertiary {
   font-size: 16px;
-  font-weight: 700;
-  transition: gap 0.2s ease;
-}
-
-.fb-modal__link:hover {
-  gap: 12px;
-}
-
-.fb-modal__link:focus {
-  outline: 4px solid var(--clr-focus-focus);
-  outline-offset: 2px;
-}
-
-.fb-modal__link svg {
-  color: var(--clr-link-default);
 }
 
 /* Responsive Modal */

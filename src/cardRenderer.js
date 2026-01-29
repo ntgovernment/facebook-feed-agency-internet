@@ -43,7 +43,7 @@ export function createPhotoCard(post) {
         </div>
       </div>
       <div class="fb-card__footer">
-        <button class="fb-card__button" data-left-icon="false" data-right-icon="true" data-size="Small" data-state="Default" data-type="Tertiary">
+        <button class="btn btn-tertiary" data-left-icon="false" data-right-icon="true" data-size="Small" data-state="Default" data-type="Tertiary">
           <span>Find out more</span>
           <div class="fb-card__arrow" data-colour="Black">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -62,7 +62,7 @@ export function createPhotoCard(post) {
   }
 
   card
-    .querySelector(".fb-card__button")
+    .querySelector(".btn-tertiary")
     .addEventListener("click", () => showPostModal(post));
 
   return card;
@@ -100,7 +100,7 @@ export function createTextCard(post) {
         </div>
       </div>
       <div class="fb-card__footer">
-        <button class="fb-card__button" data-left-icon="false" data-right-icon="true" data-size="Small" data-state="Default" data-type="Tertiary">
+        <button class="btn btn-tertiary" data-left-icon="false" data-right-icon="true" data-size="Small" data-state="Default" data-type="Tertiary">
           <span>Find out more</span>
           <div class="fb-card__arrow" data-colour="Black">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -119,7 +119,7 @@ export function createTextCard(post) {
   }
 
   card
-    .querySelector(".fb-card__button")
+    .querySelector(".btn-tertiary")
     .addEventListener("click", () => showPostModal(post));
 
   return card;

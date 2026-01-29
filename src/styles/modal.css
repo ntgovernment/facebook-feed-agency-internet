@@ -100,29 +100,8 @@
   border-top: 1px solid var(--clr-border-subtle);
 }
 
-.fb-modal__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--clr-link-default);
-  text-decoration: none;
-  font-family: Lato, sans-serif;
+.fb-modal__footer .btn-tertiary {
   font-size: 16px;
-  font-weight: 700;
-  transition: gap 0.2s ease;
-}
-
-.fb-modal__link:hover {
-  gap: 12px;
-}
-
-.fb-modal__link:focus {
-  outline: 4px solid var(--clr-focus-focus);
-  outline-offset: 2px;
-}
-
-.fb-modal__link svg {
-  color: var(--clr-link-default);
 }
 
 /* Responsive Modal */
