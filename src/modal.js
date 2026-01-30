@@ -11,6 +11,12 @@ export function showPostModal(post) {
   const { title } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
   const imageUrl = getImageUrl(post);
+
+  // Get engagement stats
+  const likes = post.reactions?.summary?.total_count || 0;
+  const comments = post.comments?.summary?.total_count || 0;
+  const shares = post.shares?.count || 0;
+
   const postUrl =
     post.attachments?.data?.[0]?.target?.url ||
     post.attachments?.data?.[0]?.unshimmed_url ||
@@ -28,8 +34,21 @@ export function showPostModal(post) {
         <button class="fb-modal__close" aria-label="Close modal">&times;</button>
       </div>
       <div class="fb-modal__header">
-        <h2>${title}</h2>
-        <p class="fb-modal__date">${formattedDate}</p>
+        <div class="fb-modal__engagement">
+          <div class="fb-modal__stat">
+            <i class="${likes > 0 ? "far" : "fal"} fa-thumbs-up fb-card__icon${likes === 0 ? " fb-card__icon--inactive" : ""}"></i>
+            ${likes > 0 ? `<span class="fb-card__count">${likes}</span>` : ""}
+          </div>
+          <div class="fb-modal__stat">
+            <i class="${comments > 0 ? "far" : "fal"} fa-comment fb-card__icon fb-card__icon--flipped${comments === 0 ? " fb-card__icon--inactive" : ""}"></i>
+            ${comments > 0 ? `<span class="fb-card__count">${comments}</span>` : ""}
+          </div>
+          <div class="fb-modal__stat">
+            <i class="${shares > 0 ? "far" : "fal"} fa-share fb-card__icon${shares === 0 ? " fb-card__icon--inactive" : ""}"></i>
+            ${shares > 0 ? `<span class="fb-card__count">${shares}</span>` : ""}
+          </div>
+        </div>
+        <div class="fb-modal__date">${formattedDate}</div>
       </div>
       <div class="fb-modal__body">
       </div>
