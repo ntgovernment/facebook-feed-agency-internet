@@ -7,8 +7,6 @@ import { createPhotoCard, createTextCard } from "./cardRenderer.js";
 console.log("Facebook Feed Agency Internet - Loaded!");
 
 // State management
-let currentPage = 1;
-let itemsPerPage = 5;
 let filteredPosts = [];
 
 // Fetch posts from API
@@ -41,7 +39,7 @@ function renderCards(container, posts, start, end) {
   container.appendChild(fragment);
 }
 
-// Setup pagination and render posts
+// Setup feed and render all posts
 function setupFeed(widget, posts, cardSize) {
   if (posts.length === 0) {
     widget.innerHTML = '<p class="fb-feed__empty">No posts available.</p>';
@@ -53,28 +51,8 @@ function setupFeed(widget, posts, cardSize) {
   container.className = `fb-feed__grid fb-feed__grid--${cardSize}`;
   widget.appendChild(container);
 
-  // Render initial cards
-  renderCards(container, posts, 0, itemsPerPage);
-  currentPage = 1;
-
-  // Add load more button if needed
-  if (posts.length > itemsPerPage) {
-    const loadMoreBtn = document.createElement("button");
-    loadMoreBtn.className = "btn btn-primary";
-    loadMoreBtn.textContent = "Load more";
-    loadMoreBtn.addEventListener("click", () => {
-      const start = currentPage * itemsPerPage;
-      const end = start + itemsPerPage;
-      renderCards(container, posts, start, end);
-      currentPage++;
-
-      // Hide button if all posts loaded
-      if (currentPage * itemsPerPage >= posts.length) {
-        loadMoreBtn.style.display = "none";
-      }
-    });
-    widget.appendChild(loadMoreBtn);
-  }
+  // Render all cards at once
+  renderCards(container, posts, 0, posts.length);
 }
 
 // Initialize widget
@@ -88,7 +66,6 @@ async function initializeWidget() {
   const startDate = widget.dataset.startDate || "";
   const endDate = widget.dataset.endDate || "";
   const filterKeywords = widget.dataset.filterKeywords || "";
-  itemsPerPage = parseInt(widget.dataset.itemsPerPage) || 5;
   const cardSize = widget.dataset.cardSize || "compact";
 
   let postsData = null;
@@ -108,7 +85,6 @@ async function initializeWidget() {
 
   // Try fallback URL if primary API failed
   if (!postsData && fallbackUrl) {
-    console.log("Trying fallback URL:", fallbackUrl);
     postsData = await fetchPosts(fallbackUrl);
     // Normalize data structure if API returns { data: [...] }
     if (postsData?.data && Array.isArray(postsData.data)) {
