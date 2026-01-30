@@ -436,6 +436,21 @@
   cursor: not-allowed !important;
 }
 
+.facebook-feed .btn-primary i,
+.fb-modal .btn-primary i {
+  color: var(--btn-primary-color) !important;
+}
+
+.facebook-feed .btn-primary:hover i,
+.fb-modal .btn-primary:hover i {
+  color: var(--btn-primary-hover-color) !important;
+}
+
+.facebook-feed .btn-primary:active i,
+.fb-modal .btn-primary:active i {
+  color: var(--btn-primary-active-color) !important;
+}
+
 /* Tag Label Styles */
 .fb-tag-label {
   color: var(--clr-text-default);
@@ -453,7 +468,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   opacity: 0;
@@ -461,6 +476,7 @@
 }
 
 .fb-modal--active {
+  display: flex;
   opacity: 1;
 }
 
@@ -613,6 +629,9 @@
   padding: var(--spacing-md) var(--spacing-xl) var(--spacing-xl)
     var(--spacing-xl);
   border-top: 1px solid var(--clr-border-subtle);
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 .fb-modal__footer .btn-tertiary {

@@ -6,8 +6,53 @@ import {
   getImageUrl,
 } from "./utils.js";
 
+// Track focus for restoration
+let previouslyFocusedElement = null;
+let focusTrapListener = null;
+
+// Get all focusable elements within a container
+function getFocusableElements(container) {
+  const focusableSelectors = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    '[tabindex]:not([tabindex="-1"])',
+  ].join(", ");
+
+  return Array.from(container.querySelectorAll(focusableSelectors));
+}
+
+// Create focus trap for modal
+function createFocusTrap(modal) {
+  const focusableElements = getFocusableElements(modal);
+
+  if (focusableElements.length === 0) return null;
+
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  return function trapFocus(e) {
+    if (e.key !== "Tab") return;
+
+    // Shift + Tab on first element -> move to last
+    if (e.shiftKey && document.activeElement === firstElement) {
+      e.preventDefault();
+      lastElement.focus();
+      return;
+    }
+
+    // Tab on last element -> move to first
+    if (!e.shiftKey && document.activeElement === lastElement) {
+      e.preventDefault();
+      firstElement.focus();
+    }
+  };
+}
+
 // Show post modal
-export function showPostModal(post) {
+export function showPostModal(post, triggeringElement = null) {
   const { title } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
   const imageUrl = getImageUrl(post);
@@ -25,10 +70,18 @@ export function showPostModal(post) {
   const fullMessage = post.message || "No message available";
   const processedMessage = processText(fullMessage);
 
+  // Store previously focused element
+  previouslyFocusedElement = triggeringElement || document.activeElement;
+
   const modal = document.createElement("div");
   modal.className = "fb-modal";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "modal-date");
+  modal.setAttribute("aria-describedby", "modal-body");
+
   modal.innerHTML = `
-    <div class="fb-modal__overlay"></div>
+    <div class="fb-modal__overlay" aria-hidden="true"></div>
     <div class="fb-modal__content">
       <div class="fb-modal__image" style="background-image: url('${imageUrl}')">
         <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/600x338?text=Image+Not+Available'">
@@ -49,9 +102,9 @@ export function showPostModal(post) {
             ${shares > 0 ? `<span class="fb-card__count">${shares}</span>` : ""}
           </div>
         </div>
-        <div class="fb-modal__date">${formattedDate}</div>
+        <div class="fb-modal__date" id="modal-date">${formattedDate}</div>
       </div>
-      <div class="fb-modal__body">
+      <div class="fb-modal__body" id="modal-body">
       </div>
       ${
         permalink !== "#" || postUrl !== "#"
@@ -85,20 +138,61 @@ export function showPostModal(post) {
   // Insert processed message with HTML
   modal.querySelector(".fb-modal__body").innerHTML = processedMessage;
 
+  // Hide background content from assistive technologies
+  const mainContent = document.getElementById("main-content");
+  if (mainContent) {
+    mainContent.setAttribute("aria-hidden", "true");
+  }
+
   document.body.appendChild(modal);
   document.body.style.overflow = "hidden";
+
+  // Set up focus trap
+  focusTrapListener = createFocusTrap(modal);
+  if (focusTrapListener) {
+    modal.addEventListener("keydown", focusTrapListener);
+  }
 
   // Trigger animation
   requestAnimationFrame(() => {
     modal.classList.add("fb-modal--active");
+
+    // Set initial focus to close button after animation starts
+    setTimeout(() => {
+      const closeButton = modal.querySelector(".fb-modal__close");
+      if (closeButton) {
+        closeButton.focus();
+      }
+    }, 100);
   });
 
   // Close handlers
   const closeModal = () => {
+    // Remove focus trap
+    if (focusTrapListener) {
+      modal.removeEventListener("keydown", focusTrapListener);
+      focusTrapListener = null;
+    }
+
+    // Restore background content accessibility
+    const mainContent = document.getElementById("main-content");
+    if (mainContent) {
+      mainContent.removeAttribute("aria-hidden");
+    }
+
     modal.classList.remove("fb-modal--active");
     setTimeout(() => {
       modal.remove();
       document.body.style.overflow = "";
+
+      // Restore focus to triggering element
+      if (
+        previouslyFocusedElement &&
+        typeof previouslyFocusedElement.focus === "function"
+      ) {
+        previouslyFocusedElement.focus();
+      }
+      previouslyFocusedElement = null;
     }, 300);
   };
 

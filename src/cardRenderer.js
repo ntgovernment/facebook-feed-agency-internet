@@ -68,13 +68,13 @@ export function createPhotoCard(post) {
 
   card.querySelector(".fb-card__title--link").addEventListener("click", (e) => {
     e.preventDefault();
-    showPostModal(post);
+    showPostModal(post, card);
   });
 
   // Card click handler
   card.addEventListener("click", (e) => {
     if (!e.target.closest(".fb-card__title--link")) {
-      showPostModal(post);
+      showPostModal(post, card);
     }
   });
 
@@ -82,7 +82,7 @@ export function createPhotoCard(post) {
   card.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      showPostModal(post);
+      showPostModal(post, card);
     }
   });
 
@@ -145,13 +145,13 @@ export function createTextCard(post) {
 
   card.querySelector(".fb-card__title--link").addEventListener("click", (e) => {
     e.preventDefault();
-    showPostModal(post);
+    showPostModal(post, card);
   });
 
   // Card click handler
   card.addEventListener("click", (e) => {
     if (!e.target.closest(".fb-card__title--link")) {
-      showPostModal(post);
+      showPostModal(post, card);
     }
   });
 
@@ -159,7 +159,7 @@ export function createTextCard(post) {
   card.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      showPostModal(post);
+      showPostModal(post, card);
     }
   });
 
