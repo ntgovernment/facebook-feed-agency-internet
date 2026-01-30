@@ -1,73 +1,107 @@
+/**
+ * Bootstrap 4 Compatible Button Styles
+ * Scoped to .facebook-feed and .fb-modal to avoid framework conflicts
+ */
+
 /* Base Button Styles */
-.btn {
+.facebook-feed .btn,
+.fb-modal .btn,
+.fb-card .btn {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 8px !important;
-  font-family: Lato, sans-serif !important;
+  gap: var(--spacing-xs) !important;
+  font-family: var(--font-family-base) !important;
   font-weight: 700 !important;
   cursor: pointer !important;
   text-decoration: none !important;
   border: none !important;
   background: none !important;
-  border-radius: 0 !important;
+  border-radius: var(--btn-radius) !important;
+  transition: all var(--transition-base) !important;
 }
 
-.btn:focus {
-  outline: 4px solid var(--clr-focus-focus) !important;
+.facebook-feed .btn:focus,
+.fb-modal .btn:focus,
+.fb-card .btn:focus {
+  outline: var(--focus-outline) !important;
   outline-offset: 0 !important;
 }
 
 /* Tertiary Button Variant */
-.btn-tertiary {
-  padding: 8px 0 !important;
+.facebook-feed .btn-tertiary,
+.fb-modal .btn-tertiary,
+.fb-card .btn-tertiary {
+  padding: var(--spacing-xs) 0 !important;
   justify-content: flex-start !important;
   color: var(--clr-link-default) !important;
-  font-size: 14px !important;
-  line-height: 16px !important;
+  font-size: var(--font-size-sm) !important;
+  line-height: var(--line-height-tight) !important;
 }
 
-.btn-tertiary:hover {
+.facebook-feed .btn-tertiary:hover,
+.fb-modal .btn-tertiary:hover,
+.fb-card .btn-tertiary:hover {
   color: var(--clr-link-hover) !important;
 }
 
-.btn-tertiary svg {
+.facebook-feed .btn-tertiary svg,
+.fb-modal .btn-tertiary svg,
+.fb-card .btn-tertiary svg {
   color: var(--clr-link-default) !important;
+  transition: color var(--transition-base) !important;
 }
 
-.btn-tertiary:hover svg {
+.facebook-feed .btn-tertiary:hover svg,
+.fb-modal .btn-tertiary:hover svg,
+.fb-card .btn-tertiary:hover svg {
   color: var(--clr-link-hover) !important;
 }
 
-/* Primary Button Variant */
-.btn-primary {
+/* Primary Button Variant - Bootstrap 4 Compatible */
+.facebook-feed .btn-primary,
+.fb-modal .btn-primary {
   justify-content: center !important;
   margin: 0 auto !important;
-  padding: 16px 24px !important;
-  background: var(--clr-action-pirmary) !important;
-  color: var(--clr-link-inverse) !important;
-  font-size: 16px !important;
-  line-height: 16px !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  background: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-color) !important;
+  font-size: var(--font-size-base) !important;
+  line-height: var(--line-height-tight) !important;
   overflow: hidden !important;
-  transition: background 0.2s ease !important;
-  border-radius: 0 !important;
+  border-radius: var(--btn-radius) !important;
 }
 
-.btn-primary:hover {
-  background: #c33826 !important;
+.facebook-feed .btn-primary:hover,
+.fb-modal .btn-primary:hover {
+  background: var(--btn-primary-hover-bg) !important;
+  color: var(--btn-primary-hover-color) !important;
 }
 
-.btn-primary:active {
-  background: #a22f20 !important;
+.facebook-feed .btn-primary:active,
+.fb-modal .btn-primary:active {
+  background: var(--btn-primary-active-bg) !important;
+  color: var(--btn-primary-active-color) !important;
+}
+
+.facebook-feed .btn-primary:focus,
+.fb-modal .btn-primary:focus {
+  box-shadow: var(--btn-primary-focus-shadow) !important;
+}
+
+.facebook-feed .btn-primary:disabled,
+.fb-modal .btn-primary:disabled {
+  opacity: var(--btn-disabled-opacity) !important;
+  cursor: not-allowed !important;
 }
 
 /* Tag Label Styles */
 .fb-tag-label {
   color: var(--clr-text-default);
-  font-size: 12px;
-  font-family: Lato, sans-serif;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-base);
   font-weight: 700;
   text-transform: uppercase;
-  line-height: 16px;
+  line-height: var(--line-height-tight);
   letter-spacing: 2px;
   word-wrap: break-word;
 }

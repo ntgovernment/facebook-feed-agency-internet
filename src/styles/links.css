@@ -36,3 +36,21 @@
   color: var(--clr-link-default);
   outline: none;
 }
+
+/* Title Links */
+.fb-card__title--link {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.fb-card__title--link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-card__title--link:focus,
+.fb-card__title--link:focus-visible {
+  color: var(--clr-link-default);
+  outline: 2px solid var(--clr-border-strong-01);
+  outline-offset: 2px;
+  border-bottom: none;
+}
