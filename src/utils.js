@@ -308,9 +308,10 @@ export function processText(text) {
 
   // Convert #hashtags to Facebook hashtag search links
   // Negative lookbehind (?<!&) prevents matching HTML entities like &#039;
-  // Hashtags must start with a letter (not a number)
+  // Hashtags can start with a letter or number (e.g., #16days)
+  // Semi-colons are excluded as they're not in the allowed character class
   remainingText = remainingText.replace(
-    /(?<!&)#([a-zA-Z][a-zA-Z0-9_]*)\b/g,
+    /(?<!&)#([a-zA-Z0-9][a-zA-Z0-9_]*)\b/g,
     '<a href="https://facebook.com/hashtag/$1" target="_blank" rel="noopener noreferrer" class="fb-text-link">#$1</a>',
   );
 
