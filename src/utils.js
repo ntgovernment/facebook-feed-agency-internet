@@ -2,7 +2,11 @@
 
 // Helper: Format date as DD MMM YYYY
 export function formatDate(dateString) {
+  if (!dateString) return "Unknown date";
+
   const date = new Date(dateString);
+  if (isNaN(date.getTime())) return "Invalid date";
+
   const months = [
     "Jan",
     "Feb",
@@ -75,17 +79,9 @@ export function processText(text) {
 
 // Helper: Determine if post has photo/album attachment
 export function hasPhotoAttachment(post) {
-  // Check for full_picture field (includes shared posts)
-  if (post.full_picture) {
-    return true;
-  }
-
-  // Check for image in attachments
-  if (post.attachments?.data?.[0]?.media?.image?.src) {
-    return true;
-  }
-
-  return false;
+  // Always return true to show all posts with photo card layout
+  // Posts without images will use the placeholder
+  return true;
 }
 
 // Helper: Get image URL from post
@@ -100,8 +96,8 @@ export function getImageUrl(post) {
     return post.attachments.data[0].media.image.src;
   }
 
-  // Fallback to placeholder
-  return "https://placehold.co/353x199?text=Facebook+Post";
+  // Fallback to local placeholder image
+  return "./placeholder.png";
 }
 
 // Helper: Extract title and description from message

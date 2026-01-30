@@ -98,18 +98,37 @@ async function initializeWidget() {
     console.log("Fetching posts from API:", apiUrl);
     widget.innerHTML = '<p class="fb-feed__empty">Loading posts...</p>';
     postsData = await fetchPosts(apiUrl);
+    // Normalize data structure if API returns { data: [...] }
+    if (postsData?.data && Array.isArray(postsData.data)) {
+      postsData = postsData.data;
+    } else if (!Array.isArray(postsData)) {
+      postsData = null;
+    }
   }
 
   // Try fallback URL if primary API failed
   if (!postsData && fallbackUrl) {
     console.log("Trying fallback URL:", fallbackUrl);
     postsData = await fetchPosts(fallbackUrl);
+    // Normalize data structure if API returns { data: [...] }
+    if (postsData?.data && Array.isArray(postsData.data)) {
+      postsData = postsData.data;
+    } else if (!Array.isArray(postsData)) {
+      postsData = null;
+    }
   }
 
   // Fall back to mock data if API fetch failed or no URL provided
   if (!postsData) {
     console.log("Using mock data from data.json");
-    postsData = facebookData;
+    // data.json can be either a root array or an object with data property
+    postsData = Array.isArray(facebookData) ? facebookData : facebookData?.data;
+  }
+
+  // Ensure postsData is always a valid array
+  if (!postsData || !Array.isArray(postsData)) {
+    console.error("Invalid posts data format:", postsData);
+    postsData = [];
   }
 
   // Clear loading message

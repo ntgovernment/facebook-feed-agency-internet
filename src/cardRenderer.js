@@ -4,6 +4,7 @@ import {
   extractContent,
   getImageUrl,
   processText,
+  escapeHtml,
 } from "./utils.js";
 import { showPostModal } from "./modal.js";
 
@@ -37,7 +38,7 @@ export function createPhotoCard(post) {
       <div class="fb-card__content" data-icon="false" data-type="Default">
         <div class="fb-card__text">
           <div class="fb-card__title-row">
-            <div class="fb-card__title">${title}</div>
+            <div class="fb-card__title">${escapeHtml(title)}</div>
           </div>
           ${processedDescription ? '<div class="fb-card__description"></div>' : ""}
         </div>
@@ -94,7 +95,7 @@ export function createTextCard(post) {
       <div class="fb-card__content" data-icon="false" data-type="Default">
         <div class="fb-card__text">
           <div class="fb-card__title-row">
-            <div class="fb-card__title">${title}</div>
+            <div class="fb-card__title">${escapeHtml(title)}</div>
           </div>
           ${processedDescription ? '<div class="fb-card__description"></div>' : ""}
         </div>
