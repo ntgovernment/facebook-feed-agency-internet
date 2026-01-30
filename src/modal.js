@@ -1,10 +1,16 @@
 // Modal functionality
-import { formatDate, extractContent, processText } from "./utils.js";
+import {
+  formatDate,
+  extractContent,
+  processText,
+  getImageUrl,
+} from "./utils.js";
 
 // Show post modal
 export function showPostModal(post) {
   const { title } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
+  const imageUrl = getImageUrl(post);
   const postUrl =
     post.attachments?.data?.[0]?.target?.url ||
     post.attachments?.data?.[0]?.unshimmed_url ||
@@ -17,7 +23,10 @@ export function showPostModal(post) {
   modal.innerHTML = `
     <div class="fb-modal__overlay"></div>
     <div class="fb-modal__content">
-      <button class="fb-modal__close" aria-label="Close modal">&times;</button>
+      <div class="fb-modal__image" style="background-image: url('${imageUrl}')">
+        <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/600x338?text=Image+Not+Available'">
+        <button class="fb-modal__close" aria-label="Close modal">&times;</button>
+      </div>
       <div class="fb-modal__header">
         <h2>${title}</h2>
         <p class="fb-modal__date">${formattedDate}</p>
