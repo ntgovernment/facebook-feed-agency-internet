@@ -21,6 +21,7 @@ export function showPostModal(post) {
     post.attachments?.data?.[0]?.target?.url ||
     post.attachments?.data?.[0]?.unshimmed_url ||
     "#";
+  const permalink = post.permalink_url || "#";
   const fullMessage = post.message || "No message available";
   const processedMessage = processText(fullMessage);
 
@@ -53,15 +54,27 @@ export function showPostModal(post) {
       <div class="fb-modal__body">
       </div>
       ${
-        postUrl !== "#"
+        permalink !== "#" || postUrl !== "#"
           ? `
         <div class="fb-modal__footer">
-          <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
-            View original post on Facebook
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M12 8.67v4.66a.67.67 0 01-.67.67H2.67A.67.67 0 012 13.33V4.67c0-.37.3-.67.67-.67h4.66M10 2h4v4M6.67 9.33L14 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+          ${
+            permalink !== "#"
+              ? `<a href="${permalink}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <i class="fab fa-facebook-f"></i>
+                  View post on Facebook
+                </a>`
+              : ""
+          }
+          ${
+            postUrl !== "#"
+              ? `<a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-tertiary">
+                  View original post on Facebook
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M12 8.67v4.66a.67.67 0 01-.67.67H2.67A.67.67 0 012 13.33V4.67c0-.37.3-.67.67-.67h4.66M10 2h4v4M6.67 9.33L14 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>`
+              : ""
+          }
         </div>
       `
           : ""

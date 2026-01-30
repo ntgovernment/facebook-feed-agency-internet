@@ -94,6 +94,21 @@
   cursor: not-allowed !important;
 }
 
+.facebook-feed .btn-primary i,
+.fb-modal .btn-primary i {
+  color: var(--btn-primary-color) !important;
+}
+
+.facebook-feed .btn-primary:hover i,
+.fb-modal .btn-primary:hover i {
+  color: var(--btn-primary-hover-color) !important;
+}
+
+.facebook-feed .btn-primary:active i,
+.fb-modal .btn-primary:active i {
+  color: var(--btn-primary-active-color) !important;
+}
+
 /* Tag Label Styles */
 .fb-tag-label {
   color: var(--clr-text-default);
