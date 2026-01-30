@@ -97,6 +97,10 @@
   font-size: 16px;
 }
 
+.fb-card__icon--inactive {
+  color: var(--dpsc-text-light);
+}
+
 .fb-card__icon--flipped {
   transform: scaleX(-1);
 }
