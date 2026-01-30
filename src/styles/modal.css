@@ -142,7 +142,7 @@
   margin: 0;
   color: var(--clr-text-default);
   font-family: var(--font-family-base);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   white-space: nowrap;
 }
 

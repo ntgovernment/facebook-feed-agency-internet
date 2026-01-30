@@ -30,7 +30,7 @@ export function createPhotoCard(post) {
   card.innerHTML = `
     <div class="fb-card__inner" data-footer="false" data-header="true" data-rich-media="true">
       <div class="fb-card__image" data-ratio="16:9" style="background-image: url('${imageUrl}')">
-        <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/353x199?text=Image+Not+Available'">
+        <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/353x199/transparent/777?text=Image+not+available'">
       </div>
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
         <div class="fb-card__engagement">

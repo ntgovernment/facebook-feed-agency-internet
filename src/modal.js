@@ -84,7 +84,7 @@ export function showPostModal(post, triggeringElement = null) {
     <div class="fb-modal__overlay" aria-hidden="true"></div>
     <div class="fb-modal__content">
       <div class="fb-modal__image" style="background-image: url('${imageUrl}')">
-        <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/600x338?text=Image+Not+Available'">
+        <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/600x400/transparent/777?text=Image+not+available'">
         <button class="fb-modal__close" aria-label="Close modal">&times;</button>
       </div>
       <div class="fb-modal__header">
