@@ -13,9 +13,11 @@ export function createPhotoCard(post) {
   const { title, description } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
   const imageUrl = getImageUrl(post);
-  const tagLabel = post.full_picture
-    ? (post.attachments?.data?.[0]?.type || "Post").replace(/_/g, " ")
-    : "Shared post";
+
+  // Get engagement stats
+  const likes = post.reactions?.summary?.total_count || 0;
+  const comments = post.comments?.summary?.total_count || 0;
+  const shares = post.shares?.count || 0;
 
   // Process description to include links
   const processedDescription = processText(description);
@@ -28,9 +30,18 @@ export function createPhotoCard(post) {
         <img src="${imageUrl}" alt="Post image" onerror="this.src='https://placehold.co/353x199?text=Image+Not+Available'">
       </div>
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
-        <div class="fb-card__tag-wrapper">
-          <div class="fb-card__tag" data-variant="Blue">
-            <div>${tagLabel}</div>
+        <div class="fb-card__engagement">
+          <div class="fb-card__stat">
+            <i class="far fa-thumbs-up fb-card__icon"></i>
+            ${likes > 0 ? `<span class="fb-card__count">${likes}</span>` : ""}
+          </div>
+          <div class="fb-card__stat">
+            <i class="far fa-comment fb-card__icon fb-card__icon--flipped"></i>
+            ${comments > 0 ? `<span class="fb-card__count">${comments}</span>` : ""}
+          </div>
+          <div class="fb-card__stat">
+            <i class="far fa-share fb-card__icon"></i>
+            ${shares > 0 ? `<span class="fb-card__count">${shares}</span>` : ""}
           </div>
         </div>
         <div class="fb-card__date">${formattedDate}</div>
@@ -64,9 +75,11 @@ export function createPhotoCard(post) {
 export function createTextCard(post) {
   const { title, description } = extractContent(post.message);
   const formattedDate = formatDate(post.created_time);
-  const tagLabel = post.full_picture
-    ? (post.attachments?.data?.[0]?.type || "Post").replace(/_/g, " ")
-    : "Shared post";
+
+  // Get engagement stats
+  const likes = post.reactions?.summary?.total_count || 0;
+  const comments = post.comments?.summary?.total_count || 0;
+  const shares = post.shares?.count || 0;
 
   // Process description to include links
   const processedDescription = processText(description);
@@ -76,9 +89,18 @@ export function createTextCard(post) {
   card.innerHTML = `
     <div class="fb-card__inner fb-card__inner--text" data-footer="false" data-header="true" data-rich-media="false">
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
-        <div class="fb-card__tag-wrapper">
-          <div class="fb-card__tag" data-variant="Blue">
-            <div>${tagLabel}</div>
+        <div class="fb-card__engagement">
+          <div class="fb-card__stat">
+            <i class="far fa-thumbs-up fb-card__icon"></i>
+            ${likes > 0 ? `<span class="fb-card__count">${likes}</span>` : ""}
+          </div>
+          <div class="fb-card__stat">
+            <i class="far fa-comment fb-card__icon fb-card__icon--flipped"></i>
+            ${comments > 0 ? `<span class="fb-card__count">${comments}</span>` : ""}
+          </div>
+          <div class="fb-card__stat">
+            <i class="far fa-share fb-card__icon"></i>
+            ${shares > 0 ? `<span class="fb-card__count">${shares}</span>` : ""}
           </div>
         </div>
         <div class="fb-card__date">${formattedDate}</div>

@@ -65,8 +65,8 @@
   --btn-radius: 0;
 
   /* Typography */
-  --font-family-base: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif;
+  --font-family-base:
+    Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-size-xs: 12px;
   --font-size-sm: 14px;
   --font-size-base: 16px;
@@ -211,36 +211,36 @@
   display: inline-flex;
 }
 
-.fb-card__tag-wrapper {
+/* Engagement Stats */
+.fb-card__engagement {
   flex: 1 1 0;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 10px;
-  display: inline-flex;
-}
-
-.fb-card__tag {
-  padding: 4px var(--spacing-xs);
-  background: var(--clr-bg-default);
-  overflow: hidden;
-  outline: 1px var(--clr-border-subtle) solid;
-  outline-offset: -1px;
-  justify-content: center;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  display: inline-flex;
+  gap: var(--spacing-md);
 }
 
-.fb-card__tag div {
-  color: var(--clr-text-default);
-  font-size: var(--font-size-xs);
+.fb-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fb-card__icon {
+  color: var(--clr-link-default);
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.fb-card__icon--flipped {
+  transform: scaleX(-1);
+}
+
+.fb-card__count {
+  color: var(--dpsc-text-light);
+  font-size: var(--font-size-sm);
   font-family: var(--font-family-base);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 400;
   line-height: var(--line-height-tight);
-  letter-spacing: 2px;
-  word-wrap: break-word;
 }
 
 .fb-card__date {
@@ -303,7 +303,8 @@
 /* Footer Section */
 .fb-card__footer {
   align-self: stretch;
-  padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-lg) var(--spacing-lg);
+  padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-lg)
+    var(--spacing-lg);
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
@@ -591,7 +592,6 @@
 
 /* Title Links */
 .fb-card__title--link {
-  color: inherit;
   text-decoration: none;
   border-bottom: none;
 }
