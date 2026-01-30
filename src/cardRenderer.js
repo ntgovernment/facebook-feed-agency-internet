@@ -24,6 +24,9 @@ export function createPhotoCard(post) {
 
   const card = document.createElement("div");
   card.className = "fb-card";
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `View post: ${escapeHtml(title)}`);
   card.innerHTML = `
     <div class="fb-card__inner" data-footer="false" data-header="true" data-rich-media="true">
       <div class="fb-card__image" data-ratio="16:9" style="background-image: url('${imageUrl}')">
@@ -49,7 +52,7 @@ export function createPhotoCard(post) {
       <div class="fb-card__content" data-icon="false" data-type="Default">
         <div class="fb-card__text">
           <div class="fb-card__title-row">
-            <a href="#" class="fb-card__title fb-card__title--link">${escapeHtml(title)}</a>
+            <a href="#" class="fb-card__title fb-card__title--link" tabindex="-1">${escapeHtml(title)}</a>
           </div>
           ${processedDescription ? '<div class="fb-card__description"></div>' : ""}
         </div>
@@ -66,6 +69,21 @@ export function createPhotoCard(post) {
   card.querySelector(".fb-card__title--link").addEventListener("click", (e) => {
     e.preventDefault();
     showPostModal(post);
+  });
+
+  // Card click handler
+  card.addEventListener("click", (e) => {
+    if (!e.target.closest(".fb-card__title--link")) {
+      showPostModal(post);
+    }
+  });
+
+  // Keyboard handler for accessibility
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      showPostModal(post);
+    }
   });
 
   return card;
@@ -86,6 +104,9 @@ export function createTextCard(post) {
 
   const card = document.createElement("div");
   card.className = "fb-card";
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+  card.setAttribute("aria-label", `View post: ${escapeHtml(title)}`);
   card.innerHTML = `
     <div class="fb-card__inner fb-card__inner--text" data-footer="false" data-header="true" data-rich-media="false">
       <div class="fb-card__header" data-show-date="true" data-show-tag="true">
@@ -108,7 +129,7 @@ export function createTextCard(post) {
       <div class="fb-card__content" data-icon="false" data-type="Default">
         <div class="fb-card__text">
           <div class="fb-card__title-row">
-            <a href="#" class="fb-card__title fb-card__title--link">${escapeHtml(title)}</a>
+            <a href="#" class="fb-card__title fb-card__title--link" tabindex="-1">${escapeHtml(title)}</a>
           </div>
           ${processedDescription ? '<div class="fb-card__description"></div>' : ""}
         </div>
@@ -125,6 +146,21 @@ export function createTextCard(post) {
   card.querySelector(".fb-card__title--link").addEventListener("click", (e) => {
     e.preventDefault();
     showPostModal(post);
+  });
+
+  // Card click handler
+  card.addEventListener("click", (e) => {
+    if (!e.target.closest(".fb-card__title--link")) {
+      showPostModal(post);
+    }
+  });
+
+  // Keyboard handler for accessibility
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      showPostModal(post);
+    }
   });
 
   return card;

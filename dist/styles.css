@@ -330,6 +330,16 @@
   color: var(--clr-link-default);
 }
 
+/* Card Focus States */
+.fb-card:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.fb-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /**
  * Bootstrap 4 Compatible Button Styles
  * Scoped to .facebook-feed and .fb-modal to avoid framework conflicts
@@ -604,12 +614,9 @@
   color: var(--clr-link-hover);
 }
 
-.fb-card__title--link:focus,
-.fb-card__title--link:focus-visible {
-  color: var(--clr-link-default);
-  outline: 2px solid var(--clr-border-strong-01);
-  outline-offset: 2px;
-  border-bottom: none;
+/* Focus is handled by parent .fb-card element */
+.fb-card__title--link:focus {
+  outline: none;
 }
 
 /* Main stylesheet - Modularized imports */

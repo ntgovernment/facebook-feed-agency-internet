@@ -47,10 +47,7 @@
   color: var(--clr-link-hover);
 }
 
-.fb-card__title--link:focus,
-.fb-card__title--link:focus-visible {
-  color: var(--clr-link-default);
-  outline: 2px solid var(--clr-border-strong-01);
-  outline-offset: 2px;
-  border-bottom: none;
+/* Focus is handled by parent .fb-card element */
+.fb-card__title--link:focus {
+  outline: none;
 }

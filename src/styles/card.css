@@ -195,3 +195,13 @@
 .fb-card__arrow svg {
   color: var(--clr-link-default);
 }
+
+/* Card Focus States */
+.fb-card:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.fb-card:focus:not(:focus-visible) {
+  outline: none;
+}
