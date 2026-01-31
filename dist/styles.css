@@ -148,6 +148,11 @@
   box-shadow: var(--shadow-sm);
 }
 
+.fb-card:hover .fb-card__title {
+  padding-bottom: 1px;
+  text-decoration: underline;
+}
+
 .fb-card__inner {
   flex: 1 1 0;
   flex-direction: column;
@@ -180,7 +185,7 @@
   background-size: cover;
   background-position: center;
   filter: blur(20px);
-  transform: scale(1.1);
+  transform: scale(1.5);
   z-index: 0;
 }
 
@@ -463,45 +468,18 @@
   word-wrap: break-word;
 }
 
-/* Modal Styles */
-.fb-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition-slow);
+/* Modal Styles - Bootstrap Integration */
+.fb-modal .modal-dialog {
+  max-width: 800px;
 }
 
-.fb-modal--active {
-  display: flex;
-  opacity: 1;
+.fb-modal .modal-content {
+  border: none;
+  border-radius: 0;
 }
 
-.fb-modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--overlay-bg);
-  cursor: pointer;
-}
-
-.fb-modal__content {
-  position: relative;
-  background: var(--clr-bg-default);
-  max-width: 600px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
+.fb-modal .modal-body {
   padding: 0;
-  transform: scale(0.95);
-  transition: transform var(--transition-slow);
-  box-shadow: var(--shadow-lg);
-}
-
-.fb-modal--active .fb-modal__content {
-  transform: scale(1);
 }
 
 /* Modal Image Section */
@@ -525,7 +503,7 @@
   background-size: cover;
   background-position: center;
   filter: blur(20px);
-  transform: scale(1.1);
+  transform: scale(1.2);
   z-index: 0;
 }
 
@@ -640,12 +618,13 @@
 
 /* Responsive Modal */
 @media (max-width: 576px) {
-  .fb-modal__content {
-    width: 100%;
-    height: 100%;
-    max-height: 100vh;
+  .fb-modal .modal-dialog {
+    margin: 0;
     max-width: 100%;
-    padding: 0;
+  }
+
+  .fb-modal .modal-content {
+    min-height: 100vh;
   }
 
   .fb-modal__header {
