@@ -1,0 +1,95 @@
+/**
+ * CSS Custom Properties (CSS Variables)
+ * Design System Variables for Facebook Feed Widget
+ * Bootstrap 4 Compatible Variable Structure
+ */
+
+:root {
+  /* Brand Colors */
+  --dpsc-primary: #c33826;
+  --dpsc-primary-hover: #a72f1f;
+  --dpsc-primary-active: #8c2619;
+  --dpsc-primary-rgb: 195, 56, 38;
+
+  /* Action Colors (Figma Design System) */
+  --clr-action-primary: #1f1f5f;
+  --clr-action-hover: #c33826;
+  --clr-action-primary-hover: #2e2e85;
+  --clr-action-primary-active: #181847;
+  --clr-action-primary-rgb: 31, 31, 95;
+
+  /* Link Colors */
+  --clr-link-default: #1f1f5f;
+  --clr-link-hover: #c33826;
+  --clr-link-inverse: #ffffff;
+
+  /* Text Colors */
+  --dpsc-text-primary: #1f1f5f;
+  --dpsc-text-dark: #1f1e27;
+  --dpsc-text-light: #8e8e8e;
+  --clr-text-default: #1f1e27;
+
+  /* UI Colors */
+  --dpsc-border: #d3d3d7;
+  --dpsc-background-light: #f0f0f0;
+  --clr-bg-default: #ffffff;
+  --clr-border-subtle: #d3d3d7;
+  --clr-border-strong-01: #1f1f5f;
+
+  /* Status Colors */
+  --clr-status-info-bg: #e4f0f8;
+  --clr-status-info: #107cc0;
+
+  /* Focus State Variables (Reusable for all components) */
+  --clr-focus: #ec8c58;
+  --clr-focus-focus: #ec8c58;
+  --focus-outline-width: 4px;
+  --focus-outline: 4px solid var(--clr-focus);
+
+  /* Bootstrap 4 Button Variables */
+  --btn-primary-bg: var(--clr-action-primary);
+  --btn-primary-border: var(--clr-action-primary);
+  --btn-primary-color: var(--clr-link-inverse);
+
+  --btn-primary-hover-bg: var(--clr-action-hover);
+  --btn-primary-hover-border: var(--clr-action-hover);
+  --btn-primary-hover-color: var(--clr-link-inverse);
+
+  --btn-primary-active-bg: var(--clr-action-primary-active);
+  --btn-primary-active-border: var(--clr-action-primary-active);
+  --btn-primary-active-color: var(--clr-link-inverse);
+
+  --btn-primary-focus-shadow: 0 0 0 0.2rem
+    rgba(var(--clr-action-primary-rgb), 0.5);
+  --btn-disabled-opacity: 0.65;
+  --btn-radius: 0;
+
+  /* Typography */
+  --font-family-base:
+    Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  --line-height-tight: 16px;
+  --line-height-base: 24px;
+  --line-height-relaxed: 1.6;
+
+  /* Spacing System (8px base) */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}

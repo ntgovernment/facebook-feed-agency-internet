@@ -1,0 +1,212 @@
+/* Card Styles */
+.fb-card {
+  width: 100%;
+  height: 100%;
+  background: var(--clr-bg-default);
+  outline: 1px var(--clr-border-subtle) solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  transition: box-shadow var(--transition-base);
+}
+
+.fb-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.fb-card:hover .fb-card__title {
+  padding-bottom: 1px;
+  text-decoration: underline;
+}
+
+.fb-card__inner {
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  width: 100%;
+}
+
+/* Image Section */
+.fb-card__image {
+  align-self: stretch;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: var(--dpsc-background-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.fb-card__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.5);
+  z-index: 0;
+}
+
+.fb-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.fb-card__image img[src*="placehold"] {
+  object-fit: contain;
+  padding: 20px;
+}
+
+/* Header Section */
+.fb-card__header {
+  align-self: stretch;
+  padding: var(--spacing-lg) var(--spacing-lg) 4px var(--spacing-lg);
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 45px;
+  display: inline-flex;
+}
+
+/* Engagement Stats */
+.fb-card__engagement {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.fb-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fb-card__icon {
+  color: var(--clr-link-default);
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.fb-card__icon--inactive {
+  color: var(--dpsc-text-light);
+}
+
+.fb-card__icon--flipped {
+  transform: scaleX(-1);
+}
+
+.fb-card__count {
+  color: var(--dpsc-text-light);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: var(--line-height-tight);
+}
+
+.fb-card__date {
+  color: var(--clr-text-default);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+/* Content Section */
+.fb-card__content {
+  align-self: stretch;
+  padding: var(--spacing-lg);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__text {
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__title-row {
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--spacing-xs);
+  display: inline-flex;
+}
+
+.fb-card__title {
+  flex: 1 1 0;
+  color: var(--clr-link-default);
+  font-size: var(--font-size-lg);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  line-height: var(--line-height-base);
+  word-wrap: break-word;
+}
+
+.fb-card__description {
+  align-self: stretch;
+  color: var(--clr-text-default);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: var(--line-height-base);
+  word-wrap: break-word;
+}
+
+/* Footer Section */
+.fb-card__footer {
+  align-self: stretch;
+  padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-lg)
+    var(--spacing-lg);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__arrow {
+  width: var(--spacing-md);
+  height: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-card__arrow svg {
+  color: var(--clr-link-default);
+}
+
+/* Card Focus States */
+.fb-card:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.fb-card:focus:not(:focus-visible) {
+  outline: none;
+}

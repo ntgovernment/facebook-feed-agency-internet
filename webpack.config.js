@@ -1,15 +1,15 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'production';
+  const isProduction = argv.mode === "production";
 
   return {
-    entry: './src/index.js',
+    entry: "./src/index.js",
     output: {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      filename: "bundle.js",
+      path: path.resolve(__dirname, "dist"),
       clean: true,
     },
     module: {
@@ -17,28 +17,32 @@ module.exports = (env, argv) => {
         {
           test: /\.css$/i,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
+            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+            "css-loader",
           ],
         },
       ],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: "./src/index.html",
       }),
-      ...(isProduction ? [new MiniCssExtractPlugin({
-        filename: 'styles.css',
-      })] : []),
+      ...(isProduction
+        ? [
+            new MiniCssExtractPlugin({
+              filename: "styles.css",
+            }),
+          ]
+        : []),
     ],
     devServer: {
       static: {
-        directory: path.join(__dirname, 'dist'),
+        directory: path.join(__dirname, "dist"),
       },
       compress: true,
-      port: 8080,
+      port: 8000,
       open: true,
     },
-    mode: isProduction ? 'production' : 'development',
+    mode: isProduction ? "production" : "development",
   };
 };

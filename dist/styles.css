@@ -1,0 +1,701 @@
+/**
+ * CSS Custom Properties (CSS Variables)
+ * Design System Variables for Facebook Feed Widget
+ * Bootstrap 4 Compatible Variable Structure
+ */
+
+:root {
+  /* Brand Colors */
+  --dpsc-primary: #c33826;
+  --dpsc-primary-hover: #a72f1f;
+  --dpsc-primary-active: #8c2619;
+  --dpsc-primary-rgb: 195, 56, 38;
+
+  /* Action Colors (Figma Design System) */
+  --clr-action-primary: #1f1f5f;
+  --clr-action-hover: #c33826;
+  --clr-action-primary-hover: #2e2e85;
+  --clr-action-primary-active: #181847;
+  --clr-action-primary-rgb: 31, 31, 95;
+
+  /* Link Colors */
+  --clr-link-default: #1f1f5f;
+  --clr-link-hover: #c33826;
+  --clr-link-inverse: #ffffff;
+
+  /* Text Colors */
+  --dpsc-text-primary: #1f1f5f;
+  --dpsc-text-dark: #1f1e27;
+  --dpsc-text-light: #8e8e8e;
+  --clr-text-default: #1f1e27;
+
+  /* UI Colors */
+  --dpsc-border: #d3d3d7;
+  --dpsc-background-light: #f0f0f0;
+  --clr-bg-default: #ffffff;
+  --clr-border-subtle: #d3d3d7;
+  --clr-border-strong-01: #1f1f5f;
+
+  /* Status Colors */
+  --clr-status-info-bg: #e4f0f8;
+  --clr-status-info: #107cc0;
+
+  /* Focus State Variables (Reusable for all components) */
+  --clr-focus: #ec8c58;
+  --clr-focus-focus: #ec8c58;
+  --focus-outline-width: 4px;
+  --focus-outline: 4px solid var(--clr-focus);
+
+  /* Bootstrap 4 Button Variables */
+  --btn-primary-bg: var(--clr-action-primary);
+  --btn-primary-border: var(--clr-action-primary);
+  --btn-primary-color: var(--clr-link-inverse);
+
+  --btn-primary-hover-bg: var(--clr-action-hover);
+  --btn-primary-hover-border: var(--clr-action-hover);
+  --btn-primary-hover-color: var(--clr-link-inverse);
+
+  --btn-primary-active-bg: var(--clr-action-primary-active);
+  --btn-primary-active-border: var(--clr-action-primary-active);
+  --btn-primary-active-color: var(--clr-link-inverse);
+
+  --btn-primary-focus-shadow: 0 0 0 0.2rem
+    rgba(var(--clr-action-primary-rgb), 0.5);
+  --btn-disabled-opacity: 0.65;
+  --btn-radius: 0;
+
+  /* Typography */
+  --font-family-base:
+    Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  --line-height-tight: 16px;
+  --line-height-base: 24px;
+  --line-height-relaxed: 1.6;
+
+  /* Spacing System (8px base) */
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* Transitions */
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+}
+
+/* Facebook Feed Container */
+.facebook-feed {
+  width: 100%;
+}
+
+.fb-feed__empty {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+  color: var(--clr-text-default);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+/* Grid Layout */
+.fb-feed__grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  align-items: start;
+}
+
+/* Compact card size - responsive grid */
+.fb-feed__grid--compact {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .fb-feed__grid--compact {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .fb-feed__grid--compact {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card Styles */
+.fb-card {
+  width: 100%;
+  height: 100%;
+  background: var(--clr-bg-default);
+  outline: 1px var(--clr-border-subtle) solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  transition: box-shadow var(--transition-base);
+}
+
+.fb-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.fb-card:hover .fb-card__title {
+  padding-bottom: 1px;
+  text-decoration: underline;
+}
+
+.fb-card__inner {
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+  width: 100%;
+}
+
+/* Image Section */
+.fb-card__image {
+  align-self: stretch;
+  height: 200px;
+  min-height: 200px;
+  max-height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: var(--dpsc-background-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+.fb-card__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.5);
+  z-index: 0;
+}
+
+.fb-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  transition: opacity var(--transition-slow);
+}
+
+.fb-card__image img[src*="placehold"] {
+  object-fit: contain;
+  padding: 20px;
+}
+
+/* Header Section */
+.fb-card__header {
+  align-self: stretch;
+  padding: var(--spacing-lg) var(--spacing-lg) 4px var(--spacing-lg);
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 45px;
+  display: inline-flex;
+}
+
+/* Engagement Stats */
+.fb-card__engagement {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.fb-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fb-card__icon {
+  color: var(--clr-link-default);
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.fb-card__icon--inactive {
+  color: var(--dpsc-text-light);
+}
+
+.fb-card__icon--flipped {
+  transform: scaleX(-1);
+}
+
+.fb-card__count {
+  color: var(--dpsc-text-light);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: var(--line-height-tight);
+}
+
+.fb-card__date {
+  color: var(--clr-text-default);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+/* Content Section */
+.fb-card__content {
+  align-self: stretch;
+  padding: var(--spacing-lg);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__text {
+  align-self: stretch;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__title-row {
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--spacing-xs);
+  display: inline-flex;
+}
+
+.fb-card__title {
+  flex: 1 1 0;
+  color: var(--clr-link-default);
+  font-size: var(--font-size-lg);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  line-height: var(--line-height-base);
+  word-wrap: break-word;
+}
+
+.fb-card__description {
+  align-self: stretch;
+  color: var(--clr-text-default);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: var(--line-height-base);
+  word-wrap: break-word;
+}
+
+/* Footer Section */
+.fb-card__footer {
+  align-self: stretch;
+  padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-lg)
+    var(--spacing-lg);
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  display: flex;
+}
+
+.fb-card__arrow {
+  width: var(--spacing-md);
+  height: var(--spacing-md);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-card__arrow svg {
+  color: var(--clr-link-default);
+}
+
+/* Card Focus States */
+.fb-card:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.fb-card:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/**
+ * Bootstrap 4 Compatible Button Styles
+ * Scoped to .facebook-feed and .fb-modal to avoid framework conflicts
+ */
+
+/* Base Button Styles */
+.facebook-feed .btn,
+.fb-modal .btn,
+.fb-card .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--spacing-xs) !important;
+  font-family: var(--font-family-base) !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  border: none !important;
+  background: none !important;
+  border-radius: var(--btn-radius) !important;
+  transition: all var(--transition-base) !important;
+}
+
+.facebook-feed .btn:focus,
+.fb-modal .btn:focus,
+.fb-card .btn:focus {
+  outline: var(--focus-outline) !important;
+  outline-offset: 0 !important;
+}
+
+/* Tertiary Button Variant */
+.facebook-feed .btn-tertiary,
+.fb-modal .btn-tertiary,
+.fb-card .btn-tertiary {
+  padding: var(--spacing-xs) 0 !important;
+  justify-content: flex-start !important;
+  color: var(--clr-link-default) !important;
+  font-size: var(--font-size-sm) !important;
+  line-height: var(--line-height-tight) !important;
+}
+
+.facebook-feed .btn-tertiary:hover,
+.fb-modal .btn-tertiary:hover,
+.fb-card .btn-tertiary:hover {
+  color: var(--clr-link-hover) !important;
+}
+
+.facebook-feed .btn-tertiary svg,
+.fb-modal .btn-tertiary svg,
+.fb-card .btn-tertiary svg {
+  color: var(--clr-link-default) !important;
+  transition: color var(--transition-base) !important;
+}
+
+.facebook-feed .btn-tertiary:hover svg,
+.fb-modal .btn-tertiary:hover svg,
+.fb-card .btn-tertiary:hover svg {
+  color: var(--clr-link-hover) !important;
+}
+
+/* Primary Button Variant - Bootstrap 4 Compatible */
+.facebook-feed .btn-primary,
+.fb-modal .btn-primary {
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  background: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-color) !important;
+  font-size: var(--font-size-base) !important;
+  line-height: var(--line-height-tight) !important;
+  overflow: hidden !important;
+  border-radius: var(--btn-radius) !important;
+}
+
+.facebook-feed .btn-primary:hover,
+.fb-modal .btn-primary:hover {
+  background: var(--btn-primary-hover-bg) !important;
+  color: var(--btn-primary-hover-color) !important;
+}
+
+.facebook-feed .btn-primary:active,
+.fb-modal .btn-primary:active {
+  background: var(--btn-primary-active-bg) !important;
+  color: var(--btn-primary-active-color) !important;
+}
+
+.facebook-feed .btn-primary:focus,
+.fb-modal .btn-primary:focus {
+  box-shadow: var(--btn-primary-focus-shadow) !important;
+}
+
+.facebook-feed .btn-primary:disabled,
+.fb-modal .btn-primary:disabled {
+  opacity: var(--btn-disabled-opacity) !important;
+  cursor: not-allowed !important;
+}
+
+.facebook-feed .btn-primary i,
+.fb-modal .btn-primary i {
+  color: var(--btn-primary-color) !important;
+}
+
+.facebook-feed .btn-primary:hover i,
+.fb-modal .btn-primary:hover i {
+  color: var(--btn-primary-hover-color) !important;
+}
+
+.facebook-feed .btn-primary:active i,
+.fb-modal .btn-primary:active i {
+  color: var(--btn-primary-active-color) !important;
+}
+
+/* Tag Label Styles */
+.fb-tag-label {
+  color: var(--clr-text-default);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: var(--line-height-tight);
+  letter-spacing: 2px;
+  word-wrap: break-word;
+}
+
+/* Modal Styles - Bootstrap Integration */
+.fb-modal .modal-dialog {
+  max-width: 800px;
+}
+
+.fb-modal .modal-content {
+  border: none;
+  border-radius: 0;
+}
+
+.fb-modal .modal-body {
+  padding: 0;
+}
+
+/* Modal Image Section */
+.fb-modal__image {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  min-height: 350px;
+  background: var(--dpsc-background-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.fb-modal__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+.fb-modal__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: relative;
+  z-index: 1;
+  transition: opacity var(--transition-slow);
+}
+
+.fb-modal__image img[src*="placehold"] {
+  object-fit: contain;
+  padding: 20px;
+}
+
+.fb-modal__close {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  font-size: var(--font-size-xxl);
+  line-height: 1;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-base);
+  z-index: 2;
+  text-shadow: none;
+}
+
+.fb-modal__close:hover {
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  text-shadow: none;
+}
+
+.fb-modal__close:focus {
+  outline: var(--focus-outline);
+  outline-offset: 0;
+}
+
+.fb-modal__close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.fb-modal__header {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-xl) 0 var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--spacing-md);
+}
+
+.fb-modal__engagement {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.fb-modal__stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fb-modal__date {
+  margin: 0;
+  color: var(--clr-text-default);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  white-space: nowrap;
+}
+
+.fb-modal__body {
+  margin-bottom: var(--spacing-lg);
+  padding: 0 var(--spacing-xl);
+}
+
+.fb-modal__body p {
+  margin: 0;
+  color: var(--clr-text-default);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  white-space: pre-wrap;
+}
+
+.fb-modal__footer {
+  padding: var(--spacing-md) var(--spacing-xl) var(--spacing-xl)
+    var(--spacing-xl);
+  border-top: 1px solid var(--clr-border-subtle);
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.fb-modal__footer .btn-tertiary {
+  font-size: var(--font-size-base);
+}
+
+/* Responsive Modal */
+@media (max-width: 576px) {
+  .fb-modal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .fb-modal .modal-content {
+    min-height: 100vh;
+  }
+
+  .fb-modal__header {
+    padding: var(--spacing-lg) var(--spacing-lg) 0 var(--spacing-lg);
+  }
+
+  .fb-modal__body {
+    padding: 0 var(--spacing-lg);
+  }
+
+  .fb-modal__footer {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg)
+      var(--spacing-lg);
+  }
+}
+
+/* Text Links */
+.fb-text-link {
+  color: var(--clr-link-default);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-text-link:focus,
+.fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
+}
+
+.fb-card__description .fb-text-link,
+.fb-modal__body .fb-text-link {
+  color: var(--clr-link-default);
+}
+
+.fb-card__description .fb-text-link:hover,
+.fb-modal__body .fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-card__description .fb-text-link:focus,
+.fb-card__description .fb-text-link:focus-visible,
+.fb-modal__body .fb-text-link:focus,
+.fb-modal__body .fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
+}
+
+/* Title Links */
+.fb-card__title--link {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.fb-card__title--link:hover {
+  color: var(--clr-link-hover);
+}
+
+/* Focus is handled by parent .fb-card element */
+.fb-card__title--link:focus {
+  outline: none;
+}
+
+/* Main stylesheet - Modularized imports */
+
+/* Import all CSS modules */
+

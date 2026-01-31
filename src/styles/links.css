@@ -1,0 +1,53 @@
+/* Text Links */
+.fb-text-link {
+  color: var(--clr-link-default);
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-text-link:focus,
+.fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
+}
+
+.fb-card__description .fb-text-link,
+.fb-modal__body .fb-text-link {
+  color: var(--clr-link-default);
+}
+
+.fb-card__description .fb-text-link:hover,
+.fb-modal__body .fb-text-link:hover {
+  color: var(--clr-link-hover);
+}
+
+.fb-card__description .fb-text-link:focus,
+.fb-card__description .fb-text-link:focus-visible,
+.fb-modal__body .fb-text-link:focus,
+.fb-modal__body .fb-text-link:focus-visible {
+  background-color: var(--clr-focus-focus);
+  border-bottom: 4px solid var(--clr-border-strong-01);
+  color: var(--clr-link-default);
+  outline: none;
+}
+
+/* Title Links */
+.fb-card__title--link {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.fb-card__title--link:hover {
+  color: var(--clr-link-hover);
+}
+
+/* Focus is handled by parent .fb-card element */
+.fb-card__title--link:focus {
+  outline: none;
+}
