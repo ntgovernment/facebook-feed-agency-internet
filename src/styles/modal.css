@@ -16,8 +16,8 @@
 .fb-modal__image {
   position: relative;
   width: 100%;
-  height: 338px;
-  min-height: 338px;
+  height: 350px;
+  min-height: 350px;
   background: var(--dpsc-background-light);
   background-size: cover;
   background-position: center;
